@@ -1,0 +1,11 @@
+<Window x:Class="WindowsMonitor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ATM Monitoring" Height="450" Width="800">
+    <Grid>
+        <TextBlock Text="ATM Monitoring Dashboard" FontSize="24" FontWeight="Bold" />
+        <ListView Name="ATMListView" Margin="10,50,10,10">
+            <!-- List of ATMs will be populated here -->
+        </ListView>
+    </Grid>
+</Window>
