@@ -1,0 +1,8 @@
+{
+    "ATM_API_Endpoint": "http://192.168.1.100:8080",
+    "Refresh_Interval": 5000,
+    "Authentication": {
+        "Username": "admin",
+        "Password": "password"
+    }
+}
