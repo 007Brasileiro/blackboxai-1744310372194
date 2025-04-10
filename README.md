@@ -1,9 +1,4 @@
 
-Built by https://www.blackbox.ai
-
----
-
-```markdown
 # ATM System
 
 ## Project Overview
