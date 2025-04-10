@@ -1,0 +1,49 @@
+# © 2024 Banco do Brasil
+# Developed by A1051594 - Aprendiz do Banco do Brasil
+# All rights reserved.
+
+# Configuration settings for the SUSE ATM module
+ATM_ID: "ATM001"
+Location: "Branch 1"
+
+OpenRouteAI:
+  API_Key: "your_api_key_here"
+  Endpoint: "https://api.openroute.ai/v1"
+  Model: "gpt-4"
+  Max_Retries: 3
+  Timeout: 30
+
+Network:
+  IP: "192.168.1.100"
+  Port: 8080
+  Windows_Monitor_Endpoint: "http://monitor-server:8000/api/notifications"
+  SSL_Enabled: true
+
+Hardware:
+  Cash_Dispenser:
+    Max_Capacity: 2000
+    Low_Cash_Threshold: 200
+  Card_Reader:
+    Timeout: 30
+    Max_Read_Attempts: 3
+  Printer:
+    Paper_Low_Threshold: 100
+    Check_Interval: 300
+
+Maintenance_Thresholds:
+  Max_Note_Jams: 5
+  Max_Sensor_Errors: 3
+  Max_Card_Read_Failures: 3
+  Auto_Reset_Interval: 3600
+
+Logging:
+  Level: "INFO"
+  File: "atm_log.txt"
+  Max_Size: 10485760  # 10MB
+  Backup_Count: 5
+  Include_Debug: true
+
+Security:
+  Auth_Token: "your_auth_token_here"
+  SSL_Cert_Path: "/etc/ssl/certs/atm.crt"
+  SSL_Key_Path: "/etc/ssl/private/atm.key"
