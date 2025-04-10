@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Maintenance Details - Banco do Brasil</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'bb-blue': '#1e3a8a',
+                        'bb-yellow': '#fbbf24',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans">
+    <nav class="bg-bb-blue text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="https://images.pexels.com/photos/730547/pexels-photo-730547.jpeg?auto=compress&cs=tinysrgb&w=50" alt="BB Logo" class="h-8">
+                <h1 class="text-xl font-bold">Banco do Brasil - ATM Maintenance</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span id="atm-id" class="text-sm">ATM ID: Loading...</span>
+                <span id="timestamp" class="text-sm">Last Updated: Loading...</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto py-8 px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Error Information -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fas fa-exclamation-triangle text-bb-yellow mr-2"></i>
+                    Error Details
+                </h2>
+                <div id="error-details" class="space-y-4">
+                    <div class="animate-pulse">
+                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                        <div class="space-y-3 mt-4">
+                            <div class="h-4 bg-gray-200 rounded"></div>
+                            <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diagnostic Information -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fas fa-stethoscope text-green-600 mr-2"></i>
+                    AI Diagnostic Results
+                </h2>
+                <div id="diagnostic-details" class="space-y-4">
+                    <div class="animate-pulse">
+                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                        <div class="space-y-3 mt-4">
+                            <div class="h-4 bg-gray-200 rounded"></div>
+                            <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Maintenance History -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fas fa-history text-purple-600 mr-2"></i>
+                    Maintenance History
+                </h2>
+                <div id="maintenance-history" class="space-y-4">
+                    <div class="animate-pulse">
+                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                        <div class="space-y-3 mt-4">
+                            <div class="h-4 bg-gray-200 rounded"></div>
+                            <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Center -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-semibold mb-4 flex items-center">
+                    <i class="fas fa-tools text-blue-600 mr-2"></i>
+                    Action Center
+                </h2>
+                <div class="space-y-4">
+                    <button onclick="attemptRepair()" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-wrench mr-2"></i>
+                        Attempt Repair
+                    </button>
+                    <button onclick="requestTechnician()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-user-cog mr-2"></i>
+                        Request Technician
+                    </button>
+                    <button onclick="shutdownATM()" class="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-power-off mr-2"></i>
+                        Emergency Shutdown
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Updates -->
+        <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-bell text-bb-blue mr-2"></i>
+                Live Status Updates
+            </h2>
+            <div id="status-updates" class="space-y-4">
+                <div class="animate-pulse">
+                    <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                    <div class="space-y-3 mt-4">
+                        <div class="h-4 bg-gray-200 rounded"></div>
+                        <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-100 border-t mt-8 py-4">
+        <div class="container mx-auto px-4 text-center text-gray-600 text-sm">
+            © 2024 Banco do Brasil - Developed by A1051594 - Aprendiz do Banco do Brasil
+        </div>
+    </footer>
+
+    <script src="maintenance.js"></script>
+</body>
+</html>
